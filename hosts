@@ -1,0 +1,3 @@
+[raspberrypis]
+10.10.x.x ansible_ssh_user=pi ansible_ssh_pass=raspberry
+10.10.x.x ansible_ssh_user=pi ansible_ssh_pass=raspberry

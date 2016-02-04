@@ -1,0 +1,20 @@
+---
+- hosts: raspberrypis
+  vars:
+    dashboard_url: http://www.bbc.co.uk/
+  remote_user: pi
+  sudo: true
+  tasks:
+  - name: Install Midori
+    apt: name=midori update_cache=yes
+  - name: Add breadcrumbs to old configs 1
+    lineinfile: dest=/etc/xdg/lxsession/LXDE/autostart regexp="$" line="{{ '#' }} Look in ~/.config/lxsession/LXDE-pi/autostart"
+  - name: Add breadcrumbs to old configs 2
+    lineinfile: dest=/etc/xdg/lxsession/LXDE-pi/autostart regexp="$" line="{{ '#' }} Look in ~/.config/lxsession/LXDE-pi/autostart"
+  - name: Insert new autostart config file
+    template: src=files/autostart dest=/home/pi/.config/lxsession/LXDE-pi/autostart owner=pi group=pi mode=0644
+    notify:
+    - Reboot Pi to let changes take effect
+  handlers:
+  - name: Reboot Pi to let changes take effect
+    command: reboot
