@@ -4,7 +4,7 @@
 
 # Suggested setup
 
-- Download [NOOBS LITE](https://www.raspberrypi.org/downloads/noobs/)
+- Download [NOOBS](https://www.raspberrypi.org/downloads/noobs/)
 - Follow the [NOOBS setup guide](https://www.raspberrypi.org/help/noobs-setup/)
 - When you boot the Pi for the first time, choose to download Raspbian
 - Find out the IP address of your fresh Pi, and then use this tool
