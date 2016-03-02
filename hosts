@@ -1,3 +1,13 @@
-[raspberrypis]
-10.10.x.x ansible_ssh_user=pi ansible_ssh_pass=raspberry
-10.10.x.x ansible_ssh_user=pi ansible_ssh_pass=raspberry
+[all:vars]
+ansible_user=pi
+ansible_ssh_pass=raspberry
+
+[tap-build-monitor]
+10.10.16.24 name=lovely-horse
+[tap-build-monitor:vars]
+dashboard_url=http://ci-iplayer:3030/iplayer
+
+[sport-dax]
+10.10.x.x
+[sport-dax:vars]
+dashboard_url=http://10.10.36.91:3000/dashboard/db/sport-on-tap

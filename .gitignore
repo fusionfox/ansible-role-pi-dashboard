@@ -1,0 +1,12 @@
+# Ansible
+*.retry
+
+# OS X
+.DS_Store
+
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, PyCharm
+*.iml
+.idea/
+*.iws
+*.ipr
+.idea_modules/

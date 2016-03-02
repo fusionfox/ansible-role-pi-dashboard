@@ -1,0 +1,4 @@
+---
+- hosts: sport-dax
+  roles:
+    - pi-dashboard
