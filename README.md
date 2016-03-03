@@ -66,7 +66,7 @@ In the `group_vars` directory, create a new `<GROUP_NAME>.yml` file that looks s
 
 ```yaml
 ---
-dashboard_url=<URL_TO_DISPLAY>
+dashboard_url: <URL_TO_DISPLAY>
 ```
 
 e.g.
@@ -119,7 +119,7 @@ ruin SSH's security.
 
 In which case, you can do this
 
-```
+```bash
 brew install https://raw.githubusercontent.com/kadwanev/bigboybrew/master/Library/Formula/sshpass.rb
 ```
 
