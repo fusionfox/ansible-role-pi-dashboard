@@ -96,7 +96,7 @@ In the `group_vars` directory, edit the `<GROUP_NAME>.yml` file for the group yo
 
 e.g.
 
-```
+```yaml
 ---
 dashboard_url: http://www.bbc.co.uk/
 ```
