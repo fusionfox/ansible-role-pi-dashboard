@@ -7,14 +7,14 @@
 
 # Usage
 
+Provision all hosts
 ```bash
-ansible-playbook -i hosts <GROUP_NAME>.yml
+ansible-playbook -i hosts site.yml
 ```
 
-e.g.
-
+provision a group of hosts (i.e. tap-build-monitor)
 ```bash
-ansible-playbook -i hosts sport-dax.yml
+ansible-playbook -i hosts site.yml --limit tap-build-monitor
 ```
 
 This will provision all pi's that are in the `sport-dax` group to dispay the URL specified in the `hosts` file.
@@ -23,28 +23,9 @@ This will provision all pi's that are in the `sport-dax` group to dispay the URL
 
 ## Adding a new group
 
-### 1. New Playbook
+You will need to add a new group whenever you want to make a PI point to a new url that doesn't currently exist. If you just want to add a PI to an existing group then see `Adding a pi to a group`
 
-In the root of the project make a new `<GROUP_NAME>.yml` file, named after your new group, that looks something like this
-
-```yaml
----
-- hosts: <GROUP_NAME>
-  roles:
-    - pi-dashboard
-
-```
-
-e.g.
-
-```yaml
----
-- hosts: sport-dax
-  roles:
-    - pi-dashboard
-```
-
-### 2. New Host Group
+### 1. New Host Group
 
 In the `hosts` file, add a new block for your group that looks something like this
 
@@ -60,7 +41,7 @@ e.g.
 10.10.10.2
 ```
 
-### 3. New Group Variable
+### 2. New Group Variable
 
 In the `group_vars` directory, create a new `<GROUP_NAME>.yml` file that looks something like this
 
