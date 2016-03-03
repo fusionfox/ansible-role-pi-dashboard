@@ -7,17 +7,23 @@
 
 # Usage
 
-`ansible-playbook -i hosts <GROUP_NAME>.yml`
+```bash
+ansible-playbook -i hosts <GROUP_NAME>.yml
+```
 
 e.g.
 
-`ansible-playbook -i hosts sport-dax.yml`
+```bash
+ansible-playbook -i hosts sport-dax.yml
+```
 
 This will provision all pi's that are in the `sport-dax` group to dispay the URL specified in the `hosts` file.
 
 # Configuration
 
-### Adding a new group
+## Adding a new group
+
+### 1. New Playbook
 
 In the root of the project make a new `<GROUP_NAME>.yml` file, named after your new group, that looks something like this
 
@@ -38,13 +44,13 @@ e.g.
     - pi-dashboard
 ```
 
+### 2. New Host Group
+
 In the `hosts` file, add a new block for your group that looks something like this
 
 ```
 [<GROUP_NAME>]
 <PI_IP_ADDRESS>
-[<GROUP_NAME>:vars]
-dashboard_url=<URL_TO_DISPLAY>
 ```
 
 e.g.
@@ -52,11 +58,25 @@ e.g.
 ```
 [sport-dax]
 10.10.10.2
-[sport-dax:vars]
-dashboard_url=http://10.10.36.91:3000/dashboard/db/sport-on-tap
 ```
 
-### Adding a pi to a group
+### 3. New Group Variable
+
+In the `group_vars` directory, create a new `<GROUP_NAME>.yml` file that looks something like this
+
+```yaml
+---
+dashboard_url=<URL_TO_DISPLAY>
+```
+
+e.g.
+
+```yaml
+---
+dashboard_url: http://10.10.36.91:3000/dashboard/db/sport-on-tap
+```
+
+## Adding a pi to a group
 
 In the `hosts` file, you can add additional IP addressed under the `[<GROUP_NAME>]`
 
@@ -68,15 +88,17 @@ e.g.
 10.10.10.3
 ```
 
-### Changing the URL for a group
+## Changing the URL for a group
 
-In the `hosts` file, you can change the URL for the page that will be displayed by changing the `dashboard_url` variable under the `[<GROUP_NAME>:vars]`
+This is the webpage the pi will automatically display every time it starts up.
+
+In the `group_vars` directory, edit the `<GROUP_NAME>.yml` file for the group you want to change
 
 e.g.
 
 ```
-[sport-dax:vars]
-dashboard_url=http://www.bbc.co.uk/
+---
+dashboard_url: http://www.bbc.co.uk/
 ```
 
 # Troubleshooting
