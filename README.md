@@ -7,25 +7,31 @@
 
 # Usage
 
-Provision all hosts
+Provision all hosts:
+
 ```bash
 ansible-playbook -i hosts site.yml
 ```
 
-provision a group of hosts (i.e. tap-build-monitor)
+> Warning, this really will provision **ALL** the Pi's listed in the `hosts` file, you probably want to be more specific
+
+Provision a group of hosts (i.e. `tap-build-monitor`):
+
 ```bash
 ansible-playbook -i hosts site.yml --limit tap-build-monitor
 ```
 
-This will provision all pi's that are in the `sport-dax` group to dispay the URL specified in the `hosts` file.
+This will provision all Pi's that are in the `tap-build-monitor` group to dispay the URL specified in `group_vars/tap-build-monitor.yml`.
 
 # Configuration
 
-## Adding a new group
+## Creating a new group
 
-You will need to add a new group whenever you want to make a PI point to a new url that doesn't currently exist. If you just want to add a PI to an existing group then see `Adding a pi to a group`
+You will need to add a new group whenever you want to make a Pi point to a URL not already being used for a dashboard. 
 
-### 1. New Host Group
+If you just want to add a Pi to an existing group then see `Adding a pi to a group`.
+
+### 1. New host group
 
 In the `hosts` file, add a new block for your group that looks something like this
 
@@ -41,7 +47,7 @@ e.g.
 10.10.10.2
 ```
 
-### 2. New Group Variable
+### 2. New group variable
 
 In the `group_vars` directory, create a new `<GROUP_NAME>.yml` file that looks something like this
 
