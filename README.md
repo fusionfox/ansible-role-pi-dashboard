@@ -15,13 +15,13 @@ ansible-playbook -i hosts site.yml
 
 > Warning, this really will provision **ALL** the Pi's listed in the `hosts` file, you probably want to be more specific
 
-Provision a group of hosts (i.e. `tap-build-monitor`):
+Provision a specific group of hosts:
 
 ```bash
-ansible-playbook -i hosts site.yml --limit tap-build-monitor
+ansible-playbook -i hosts site.yml --limit <GROUP_NAME>
 ```
 
-This will provision all Pi's that are in the `tap-build-monitor` group to dispay the URL specified in `group_vars/tap-build-monitor.yml`.
+For example, `ansible-playbook -i hosts site.yml --limit tap-build-monitor` would provision all Pi's that are in the `tap-build-monitor` group to dispay the URL specified in `group_vars/tap-build-monitor.yml`.
 
 # Configuration
 
