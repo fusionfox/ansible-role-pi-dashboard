@@ -1,5 +1,5 @@
-[tap-build-monitor]
-10.10.16.24 name=lovely-horse
+[dashboard-1]
+192.168.x.y
 
-[sport-dax]
-10.10.x.x
+[dashboard-2]
+192.168.x.z
