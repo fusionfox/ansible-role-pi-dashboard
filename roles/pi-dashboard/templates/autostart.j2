@@ -1,8 +1,8 @@
 # Provisioned with https://github.com/fusionfox/provision-pi-dashboard
 @lxpanel --profile LXDE-pi
 @pcmanfm --desktop --profile LXDE-pi
-#@sh ${HOME}/.config/lxsession/LXDE-pi/autokey.sh
+@point-rpi
 @xset s off
 @xset -dpms
 @xset s noblank
-@midori -e Fullscreen -a {{ dashboard_url }}
+@chromium-browser --kiosk --test-type --ignore-certificate-errors --disable-restore-session-state {{ dashboard_url }}

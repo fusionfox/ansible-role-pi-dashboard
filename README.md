@@ -1,9 +1,9 @@
 # Before you start
 
-- Download [NOOBS](https://www.raspberrypi.org/downloads/noobs/)
-- Follow the [NOOBS setup guide](https://www.raspberrypi.org/help/noobs-setup/)
-- When you boot the Pi for the first time, choose to download Raspbian
-- Find out the IP address of your fresh Pi, and then use this tool
+- Download [The latest Raspbian release](https://www.raspberrypi.org/downloads/raspbian/) (make sure it includes the PIXEL desktop)
+- Follow the [installation guide](https://www.raspberrypi.org/documentation/installation/installing-images/README.md)
+- Start up your Pi and find out the IP address
+- Optionally, use `raspi-config` to set the hostname of your Pi to save you having to use IP addresses for provisioning
 
 # Usage
 
@@ -21,13 +21,19 @@ Provision a specific group of hosts:
 ansible-playbook -i hosts site.yml --limit <GROUP_NAME>
 ```
 
-For example, `ansible-playbook -i hosts site.yml --limit tap-build-monitor` would provision all Pi's that are in the `tap-build-monitor` group to dispay the URL specified in `group_vars/tap-build-monitor.yml`.
+For example: 
+
+```
+ansible-playbook -i hosts site.yml --limit dashboard-1
+```
+
+would provision all Pi's that are in the `dashboard-1` group to dispay the URL specified in `group_vars/dashboard-1.yml`.
 
 # Configuration
 
 ## Creating a new group
 
-You will need to add a new group whenever you want to make a Pi point to a URL not already being used for a dashboard. 
+You will need to add a new group whenever you want to make a Pi point to a URL not already being used for a dashboard.
 
 If you just want to add a Pi to an existing group then see `Adding a pi to a group`.
 
@@ -43,8 +49,8 @@ In the `hosts` file, add a new block for your group that looks something like th
 e.g.
 
 ```
-[sport-dax]
-10.10.10.2
+[dashboard-1]
+192.168.1.100
 ```
 
 ### 2. New group variable
@@ -60,7 +66,7 @@ e.g.
 
 ```yaml
 ---
-dashboard_url: http://10.10.36.91:3000/dashboard/db/sport-on-tap
+dashboard_url: http://192.168.1.100:3000/dashboard/db/my-dashboard
 ```
 
 ## Adding a pi to a group
@@ -70,9 +76,9 @@ In the `hosts` file, you can add additional IP addressed under the `[<GROUP_NAME
 e.g.
 
 ```
-[sport-dax]
-10.10.10.2
-10.10.10.3
+[dashboard-1]
+192.168.1.100
+192.168.1.101
 ```
 
 ## Changing the URL for a group

@@ -1,7 +1,4 @@
 ---
-- name: Install Midori
-  apt: name=midori update_cache=yes
-  become: true
 - name: Add breadcrumbs to old configs 1
   lineinfile: dest=/etc/xdg/lxsession/LXDE/autostart regexp="^{{ '#' }} Look in" line="{{ '#' }} Look in ~/.config/lxsession/LXDE-pi/autostart"
   become: true
