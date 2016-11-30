@@ -1,12 +1,23 @@
 ---
 - name: Add breadcrumbs to old configs 1
-  lineinfile: dest=/etc/xdg/lxsession/LXDE/autostart regexp="^{{ '#' }} Look in" line="{{ '#' }} Look in ~/.config/lxsession/LXDE-pi/autostart"
+  lineinfile:
+    dest: /etc/xdg/lxsession/LXDE/autostart
+    regexp: "^{{ '#' }} Look in"
+    line: "{{ '#' }} Look in ~/.config/lxsession/LXDE-pi/autostart"
   become: true
 - name: Add breadcrumbs to old configs 2
-  lineinfile: dest=/etc/xdg/lxsession/LXDE-pi/autostart regexp="^{{ '#' }} Look in" line="{{ '#' }} Look in ~/.config/lxsession/LXDE-pi/autostart"
+  lineinfile:
+    dest: /etc/xdg/lxsession/LXDE-pi/autostart
+    regexp: "^{{ '#' }} Look in"
+    line: "{{ '#' }} Look in ~/.config/lxsession/LXDE-pi/autostart"
   become: true
 - name: Insert new autostart config file
-  template: src=autostart.j2 dest=/home/pi/.config/lxsession/LXDE-pi/autostart owner=pi group=pi mode=0644
+  template:
+    src: autostart.j2
+    dest: /home/pi/.config/lxsession/LXDE-pi/autostart
+    owner: pi
+    group: pi
+    mode: 0644
   become: true
 - name: Reboot the machine to let changes take effect
   shell: sleep 2 && shutdown -r now "Ansible updates triggered"
@@ -15,5 +26,12 @@
   ignore_errors: true
   become: true
 - name: waiting for server to come back
-  local_action: wait_for host={{ inventory_hostname }} port=22 state=started delay=30 timeout=300 connect_timeout=15
+  local_action:
+    module: wait_for
+    host: "{{ inventory_hostname }}"
+    port: 22
+    state: started
+    delay: 30
+    timeout: 300
+    connect_timeout: 15
   become: false
