@@ -19,6 +19,12 @@
     group: pi
     mode: 0644
   become: true
+- name: Enable VNC
+  service:
+    name: vncserver-x11-serviced.service
+    enabled: yes
+    state: started
+  become: true
 - name: Reboot the machine to let changes take effect
   shell: sleep 2 && shutdown -r now "Ansible updates triggered"
   async: 1
