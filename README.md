@@ -30,5 +30,5 @@ Example Playbook
 ```yaml
 - hosts: dashboards
   roles:
-    - pi-dashboard
+    - fusionfox.pi-dashboard
 ```
