@@ -1,5 +1,7 @@
-Role Name
+pi-dashboard
 =========
+
+[![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-pi--dashboard-blue.svg?style=flat)](https://galaxy.ansible.com/fusionfox/pi-dashboard)
 
 Use Ansible to configure RaspberryPis to be dashboards.
 
