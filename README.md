@@ -1,6 +1,7 @@
 pi-dashboard
 =========
 
+[![Build Status](https://travis-ci.org/fusionfox/ansible-role-pi-dashboard.svg?branch=master)](https://travis-ci.org/fusionfox/ansible-role-pi-dashboard)
 [![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-pi--dashboard-blue.svg?style=flat)](https://galaxy.ansible.com/fusionfox/pi-dashboard)
 
 Use Ansible to configure RaspberryPis to be dashboards.
