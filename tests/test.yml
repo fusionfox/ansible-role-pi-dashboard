@@ -1,4 +1,4 @@
 ---
 - hosts: localhost
   roles:
-    - ansible-role-pi-dashboard
+    - ../ansible-role-pi-dashboard
